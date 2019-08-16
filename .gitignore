@@ -1,0 +1,9 @@
+*.pyc
+.env
+uploads/
+media/
+env/
+majaraenv/
+statics/
+/.idea
+/.idea/workspace.xml

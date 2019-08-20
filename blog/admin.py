@@ -55,10 +55,10 @@ class DialogStoryAdmin(admin.ModelAdmin):
 class AuthorAdmin(admin.ModelAdmin):
 
     def pictureShow(self, obj):
-        if obj.image is None:
+        if obj.avatar is None:
             return 'بدون عکس'
         else:
-            return format_html("<img src='%s' height=50px>" % obj.image.url)
+            return format_html("<img src='%s' height=50px>" % obj.avatar.url)
 
     list_display_links = ('FirstName', 'LastName', 'pictureShow')
     list_display = ('FirstName', 'LastName', 'pictureShow')
@@ -69,15 +69,6 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(TextStory)
 class TextStoryAdmin(admin.ModelAdmin):
-
-    def pictureShow(self, obj):
-        if obj.image is None:
-            return 'بدون عکس'
-        else:
-            return format_html("<img src='%s' height=50px>" % obj.image.url)
-
-    list_display_links = ('storyId', 'pictureShow',)
-    list_display = ('storyId', 'pictureShow',)
+    list_display_links = ('storyId',)
+    list_display = ('storyId',)
     search_fields = ['storyId', 'pageNumber']
-
-    pictureShow.allow_tags = True

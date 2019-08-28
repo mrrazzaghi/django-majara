@@ -56,8 +56,8 @@ class Story(models.Model):
     CoverImage = models.ImageField(blank=False, verbose_name='عکس کاور')
     headline = models.CharField(blank=False, max_length=255, verbose_name='سر تیتر')
     authorId = models.ForeignKey(Author, on_delete=models.CASCADE, blank=True, verbose_name='نویسنده')
-    hasAudio = models.BooleanField(default=False, verbose_name='فایل صوتی دارد؟')
-    audioFile = models.FileField(blank=False, verbose_name='فایل صوتی')
+    hasAudio = models.BooleanField(default=True, verbose_name='فایل صوتی دارد؟')
+    audioFile = models.FileField(blank=True, verbose_name='فایل صوتی')
     StoryType = EnumField(StoryType, blank=False, default=StoryType.Text)
 
     def __str__(self):

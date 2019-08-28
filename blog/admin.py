@@ -15,6 +15,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display_links = ('title', 'pictureShow', 'slug')
     list_display = ('title', 'pictureShow', 'slug')
     search_fields = ['slug', 'title']
+    prepopulated_fields = {'slug': ('title',)}
 
     pictureShow.allow_tags = True
 
@@ -23,32 +24,24 @@ class CategoryAdmin(admin.ModelAdmin):
 class StoryAdmin(admin.ModelAdmin):
 
     def pictureShow(self, obj):
-        if obj.image is None:
+        if obj.CoverImage is None or obj.thumbNailImage is None:
             return 'بدون عکس'
         else:
-            return format_html("<img src='%s' height=50px>" % obj.image.url)
+            return format_html("<img src='%s' height=50px>" % obj.CoverImage.url)
 
     list_display = ('title', 'pictureShow', 'slug')
     list_display_links = ('title', 'pictureShow', 'slug')
     search_fields = ['slug', 'title']
+    prepopulated_fields = {'slug': ('title',)}
 
     pictureShow.allow_tags = True
 
 
 @admin.register(DialogStory)
 class DialogStoryAdmin(admin.ModelAdmin):
-
-    def pictureShow(self, obj):
-        if obj.image is None:
-            return 'بدون عکس'
-        else:
-            return format_html("<img src='%s' height=50px>" % obj.image.url)
-
-    list_display = ('storyId', 'pictureShow', 'dialogTextType')
-    list_display_links = ('storyId', 'pictureShow', 'dialogTextType')
+    list_display = ('storyId', 'dialogTextType')
+    list_display_links = ('storyId', 'dialogTextType')
     search_fields = ['storyId', 'dialogTextType']
-
-    pictureShow.allow_tags = True
 
 
 @admin.register(Author)

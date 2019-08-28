@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import locale
 import os
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,9 +25,6 @@ SECRET_KEY = '7(-)mx5-3u*(6y6or8c*(ozae9o!-$q@1gle83x28^-1$%9vlz'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-MEDIA_ROOT = BASE_DIR + '/uploads/'
-MEDIA_URL = '/uploads/'
 
 # Application definition
 

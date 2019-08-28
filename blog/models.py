@@ -2,6 +2,11 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from enumfields import EnumField
 from enum import Enum
+from django.core.files.storage import FileSystemStorage
+
+
+def dir_media(file):
+    return FileSystemStorage(location=f'H:/Programming/Django/django-majara/uploads/{file}/')
 
 
 class Category(models.Model):
@@ -11,7 +16,7 @@ class Category(models.Model):
 
     title = models.CharField(blank=False, max_length=255, verbose_name='عنوان')
     slug = models.SlugField(blank=False, max_length=255, verbose_name='شناسه وب')
-    image = models.ImageField(blank=False, verbose_name='عکس')
+    image = models.ImageField(storage=dir_media('Category'), blank=False, verbose_name='عکس')
     description = models.TextField(blank=False, verbose_name='توضیحات')
 
     def __str__(self):
@@ -27,7 +32,7 @@ class Author(models.Model):
     LastName = models.CharField(blank=False, max_length=255, verbose_name='نام خانوادگی')
     Email = models.CharField(blank=False, max_length=70, verbose_name='ایمیل')
     mobile = models.CharField(blank=False, max_length=11, verbose_name='موبایل')
-    avatar = models.ImageField(blank=False, verbose_name='آواتار')
+    avatar = models.ImageField(storage=dir_media('AuthorAvatar'), blank=False, verbose_name='آواتار')
     description = RichTextField(blank=True, verbose_name='توضیحات')
 
 
@@ -52,8 +57,8 @@ class Story(models.Model):
     title = models.CharField(blank=False, max_length=255, verbose_name='عنوان')
     slug = models.CharField(blank=False, max_length=255, verbose_name='شناسه وب')
     categoryId = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, verbose_name='دسته بندی داستان')
-    thumbNailImage = models.ImageField(blank=False, verbose_name='عکس کوچک')
-    CoverImage = models.ImageField(blank=False, verbose_name='عکس کاور')
+    thumbNailImage = models.ImageField(storage=dir_media('Story-thumbNailImage'), blank=False, verbose_name='عکس کوچک')
+    CoverImage = models.ImageField(storage=dir_media('Story-CoverImage'), blank=False, verbose_name='عکس کاور')
     headline = models.CharField(blank=False, max_length=255, verbose_name='سر تیتر')
     authorId = models.ForeignKey(Author, on_delete=models.CASCADE, blank=True, verbose_name='نویسنده')
     hasAudio = models.BooleanField(default=True, verbose_name='فایل صوتی دارد؟')

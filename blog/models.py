@@ -99,4 +99,3 @@ class DialogStory(models.Model):
     SayFrom = models.CharField(blank=False, max_length=50, verbose_name='شخص گوینده')
     SayTime = models.CharField(blank=False, max_length=10, verbose_name='زمان دیالوگ')
     SayText = models.TextField(blank=False, verbose_name='متن دیالوگ')
-#

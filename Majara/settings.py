@@ -24,6 +24,10 @@ SECRET_KEY = '7(-)mx5-3u*(6y6or8c*(ozae9o!-$q@1gle83x28^-1$%9vlz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+MEDIA_ROOT = BASE_DIR + '/uploads/'
+MEDIA_URL = '/uploads/'
+
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -83,8 +87,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'majara',
-        'PASSWORD': '',
-        'USER': 'root',
+        'PASSWORD': 'Ferdosi!23',
+        'USER': 'ferdosi',
         'PORT': 3306,
     },
 }
